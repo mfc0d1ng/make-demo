@@ -176,9 +176,15 @@ std::string get_tokens(const char *map_content, std::size_t map_size)
         }
         else
         {
-            if(ignore == 0 && (map_content[i] == '\\' && map_content[i+1] == ':'))
+            if((map_content[i] == '\\' && map_content[i+1] == ':') && ignore == 0)
             {
                 tokens.push_back(':');
+                i++; 
+                continue;
+            }
+            else if((map_content[i] == '\\' && map_content[i+1] == '#') && ignore == 0)
+            {
+                tokens.push_back('#');
                 i++; 
                 continue;
             }
