@@ -5,8 +5,6 @@
 #include <pwd.h>
 #include "make.h"
 
-#define __tab   0x4
-
 
 static int isDirExists(const char *path)
 {
