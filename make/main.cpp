@@ -176,7 +176,7 @@ int main(int argc, char *argv[])
             
 	   /**                                                    **
 	    * Checking the basic textual structure of the map file *
-        **                                                    **/ 
+     	    **                                                    **/ 
         
 	        if(content[i-2] != ':')
             {
