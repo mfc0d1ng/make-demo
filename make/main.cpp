@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     std::string map_dir = create_map_dir();
     const char *dirPtr = map_dir.c_str();
 
-    /* Check map directory */
+    /* Check map's directory */
     check_map_dir(dirPtr);
 
     map_dir.append("/map.txt");
