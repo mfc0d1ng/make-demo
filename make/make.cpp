@@ -25,8 +25,8 @@ void check_map_dir(const char *__dirPtr)
 {
     if (isDirExists(__dirPtr) == 0)
     {
-        system("cd ~;"
-               "mkdir .make"); 
+        std::system("cd ~;"
+                    "mkdir .make"); 
     }
 }
 
