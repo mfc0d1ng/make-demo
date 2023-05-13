@@ -125,7 +125,6 @@ std::string get_tokens(const char *map_content, std::size_t map_size)
 {
     int ignore = 1;
     int read = true;
-    std::size_t cwspaces = 0;
     std::string tokens = {};
 
     std::size_t i = 0;
@@ -177,34 +176,11 @@ std::string get_tokens(const char *map_content, std::size_t map_size)
         }
         else
         {
-            if(ignore == 0 && !strncmp(&map_content[i], "\\: ", 3))
-            {
-                tokens.append(": ");
-                i++;
-                continue;
-            }
-            else if(ignore == 0 && !strncmp(&map_content[i], "\\:", 2))
+            if(ignore == 0 && (map_content[i] == '\\' && map_content[i+1] == ':'))
             {
                 tokens.push_back(':');
                 i++; 
                 continue;
-            }
-
-            if(map_content[i] == ' ')
-            {
-                cwspaces++;
-                if(cwspaces == __tab && map_content[i+1] != ' ')
-                {
-                    tokens.append("    ");
-                }
-                else if(cwspaces > 1)
-                {
-                    continue;
-                }
-            }
-            else
-            {
-                cwspaces = 0;
             }
 
             tokens.push_back(map_content[i]);  
