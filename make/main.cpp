@@ -218,8 +218,7 @@ int main(int argc, char *argv[])
                     break;
                 }   
                 cmd.push_back(content[i]); 
-            }            
-            cmd.shrink_to_fit(); 
+            }
             break;
         }   
     }
