@@ -225,7 +225,6 @@ int main(int argc, char *argv[])
 
     /* Execute user's configuration */
     const char *cmd_ptr = cmd.c_str();
-   
     if(argc == 2)
     {
         std::system(cmd_ptr);
