@@ -171,7 +171,7 @@ int main(int argc, char *argv[])
 	    * Checking the basic textual structure of the map file *
      	    **                                                    **/ 
         
-	        if(content[i-2] != ':')
+	    if(content[i-2] != ':')
             {
                 std::printf("Error: expected colon ':' at line %i where '%c' is found ...\n%s\n", ++line, content[i-2],
                             "The basic textual structure of map.txt can't be changed.\n" 
