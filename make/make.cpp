@@ -121,11 +121,14 @@ std::size_t get_map_file(std::string &file_content, FILE **map)
 
 std::string get_tokens(const char *map_content, std::size_t map_size)
 {
-    int ignore = 1;
+    int ignore = true; 
     int read = true;
-    std::string tokens = {};
+    int flag = false;
 
     std::size_t i = 0;
+    std::size_t wspace = 0;
+
+    std::string tokens = {};
 
     while (i < map_size)
     {
@@ -154,13 +157,13 @@ std::string get_tokens(const char *map_content, std::size_t map_size)
         
         if(read == true)
         {
-            if((map_content[i-1] != '\\' && map_content[i] == '"') && ignore == 1)
+            if((map_content[i-1] != '\\' && map_content[i] == '"') && ignore == true)
             {
-                ignore = 0; 
+                ignore = false; 
             }
-            else if(((map_content[i-1] != '\\' && map_content[i] == '"') || (map_content[i-1] != '\\' && map_content[i] == ':')) && ignore == 0)
+            else if(((map_content[i-1] != '\\' && map_content[i] == '"') || (map_content[i-1] != '\\' && map_content[i] == ':')) && ignore == false)
             {
-                ignore = 1; 
+                ignore = true; 
             }
         }
         else
@@ -168,23 +171,59 @@ std::string get_tokens(const char *map_content, std::size_t map_size)
             continue;
         }
 
-        if(map_content[i] == ' ' && ignore == 1)
+        if(map_content[i] == ':' && (ignore == true))
+        {
+            flag = true;
+            tokens.push_back(map_content[i]);
+            continue;
+        }
+        else if(map_content[i] == ' ' && (ignore == true))
         {  
             continue; 
         }
         else
         {
-            if((map_content[i] == '\\' && map_content[i+1] == ':') && ignore == 0)
+
+            if((map_content[i] == '\\') && !strncmp(&map_content[i+1], "033[", 4))
+            {
+                i += 5;
+                for (; map_content[i] == ' '; i++)
+                {
+                    tokens.push_back(map_content[i]);
+                }
+            }
+
+            if((map_content[i] == '\\') && map_content[i+1] == ':')
             {
                 tokens.push_back(':');
                 i++; 
                 continue;
             }
-            else if((map_content[i] == '\\' && map_content[i+1] == '#') && ignore == 0)
+            else if((map_content[i] == '\\') && map_content[i+1] == '#')
             {
-                tokens.push_back('#');
+                tokens.push_back('#'); 
                 i++; 
                 continue;
+            }
+
+            if(map_content[i] == ' ' && (flag == false))
+            {
+                continue; 
+            }
+            else if(map_content[i] == ' ' && (flag == true))
+            {
+                wspace++; 
+                if(wspace > 1)
+                {
+                    continue; 
+                }
+            }
+            else if(map_content[i] != ' ' && (flag == true))
+            {
+                wspace = 0;
+            }
+            else
+            {
             }
 
             tokens.push_back(map_content[i]);  
@@ -192,5 +231,4 @@ std::string get_tokens(const char *map_content, std::size_t map_size)
     }
     tokens.shrink_to_fit();
     return tokens;
-}      
-
+}
