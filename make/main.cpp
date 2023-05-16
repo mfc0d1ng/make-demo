@@ -161,18 +161,11 @@ int main(int argc, char *argv[])
             ++line;
         }
 
-        if(((!strncmp(&content[i], "\"c\"", 3) || !strncmp(&content[i], "\" c \"", 5))   && !strcmp(argv[1], "-c"))      ||
-           ((!strncmp(&content[i], "\"cpp\"", 5) || !strncmp(&content[i], "\" cpp \"", 7)) && !strcmp(argv[1], "-cpp")))
+        if((!strncmp(&content[i], "\"c\"", 3) && !strcmp(argv[1], "-c"))         ||
+           (!strncmp(&content[i], "\"cpp\"", 5) && !strcmp(argv[1], "-cpp")))
         {
 
-            if(content[i+1] == ' ')
-            {
-                i += strlen(argv[1]) + 5; 
-            }
-            else
-            {
-                i += strlen(argv[1]) + 3;
-            }
+            i += strlen(argv[1]) + 3;
             
 	   /**                                                    **
 	    * Checking the basic textual structure of the map file *
@@ -234,6 +227,9 @@ int main(int argc, char *argv[])
         std::printf("\"%s\"\n", cmd_ptr);
         std::system(cmd_ptr); 
     }
-
+    else
+    {
+    }
+    
     return EXIT_SUCCESS; 
 }
