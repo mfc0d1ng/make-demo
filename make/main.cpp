@@ -224,7 +224,7 @@ int main(int argc, char *argv[])
     }
     else if(argc == 3)
     {
-        std::printf("\"%s\"\n", cmd_ptr);
+        std::printf("%s\n", cmd_ptr);
         std::system(cmd_ptr); 
     }
     else
