@@ -35,13 +35,13 @@ static FILE *create_map_file(const char *__dirPtr)
     if(map_file != nullptr)
     {
         std::fprintf(map_file, "%s", "makeMap\n{\n#Examples\n"
-                                                         "\"c\" : \"gcc main.c\",\n"
-                                                         "\"cpp\" : \"g++ main.cpp\",\n"
-                                                         "\"xc8\" : \"xc8-cc -mcpu=18f4620 main.c -o build/executable\",\n"
-                                                         "\"rust\" : \"rustc main.rs\",\n"
-                                                         "\"zig\" : \"zig run\",\n"
-                                                         "\"java\" : \"javac main.java\"\n"
-                                                         "}"); 
+                                               "\"c\" : \"gcc main.c\",\n"
+                                               "\"cpp\" : \"g++ main.cpp\",\n"
+                                               "\"xc8\" : \"xc8-cc -mcpu=18f4620 main.c -o build/executable\",\n"
+                                               "\"rust\" : \"rustc main.rs\",\n"
+                                               "\"zig\" : \"zig run\",\n"
+                                               "\"java\" : \"javac main.java\"\n"
+                                               "}"); 
         std::printf("%s%s%s%s\n", "map.txt has been created in this directory \"", __dirPtr, "\",",
                   "You may open map.txt to complete the configurations and run the program again.");
         std::fclose(map_file); 
