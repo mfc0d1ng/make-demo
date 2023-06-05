@@ -181,7 +181,7 @@ int main(int argc, char *argv[])
         
 	    if(content[i-2] != ':')
             {
-                std::printf("Error: expected colon ':' at line %i where '%c' is found ...\n%s\n", ++line, content[i-2],
+                std::printf("Error: expected colon ':' where '%c' is found, line %i ...\n%s\n", content[i-2], ++line,
                             "The basic textual structure of map.txt can't be changed.\n" 
                             "Fix this problem or remove the current map.txt and run the program again\n"
                             "in order to let the program to create A new map.txt in the map directory.\n"
@@ -192,7 +192,7 @@ int main(int argc, char *argv[])
 
             if(content[i-1] != '"')
             {
-                std::printf("Error: expected double quote '\"' at line %i where '%c' is found ...\n%s\n", ++line, content[i-1],
+                std::printf("Error: expected double quote '\"' where '%c' is found, line %i ...\n%s\n", content[i-1], ++line,
                             "The basic textual structure of map.txt can't be changed.\n"
                             "Fix this problem or remove the current map.txt and run the program again\n"
                             "in order to let the program to create A new map.txt in the map directory.\n"
