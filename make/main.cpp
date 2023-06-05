@@ -208,13 +208,13 @@ int main(int argc, char *argv[])
                 {
                     content[i] = ' '; 
                 }
-                if(content[i] == '\\' && content[i+1] == '"')
+                if((content[i] == '\\') && content[i+1] == '"')
                 {
                     cmd.push_back('"');
                     i++;
                     continue;
                 }
-                else if(content[i-1] != '\\' && content[i] == '"')
+                else if((content[i-1] != '\\') && content[i] == '"')
                 {
                     break;
                 }   
