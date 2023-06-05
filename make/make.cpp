@@ -153,11 +153,11 @@ std::string get_tokens(const char *map_content, std::size_t map_size)
 
     for (; i < map_size; i++)
     {
-        if(read == true && map_content[i] == '#')
+        if((read == true) && map_content[i] == '#')
         {
             read = false; 
         }
-        if(read == false && map_content[i] == '\n')
+        if((read == false) && map_content[i] == '\n')
         {
             read = true;
         }
