@@ -208,6 +208,9 @@ std::string get_tokens(const char *map_content, std::size_t map_size)
                     tokens.push_back(map_content[i]);
                 }
             }
+            else
+            {
+            }
 
             if(map_content[i] == ' ' && (flag == false))
             {
