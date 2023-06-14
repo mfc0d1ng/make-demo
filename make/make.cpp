@@ -188,15 +188,6 @@ std::string get_tokens(const char *map_content, std::size_t map_size)
         else
         {
 
-            if((map_content[i] == '\\') && !strncmp(&map_content[i+1], "033[", 4))
-            {
-                i += 5;
-                for (; map_content[i] == ' '; i++)
-                {
-                    tokens.push_back(map_content[i]);
-                }
-            }
-
             if((map_content[i] == '\\') && map_content[i+1] == ':')
             {
                 tokens.push_back(':');
@@ -208,6 +199,14 @@ std::string get_tokens(const char *map_content, std::size_t map_size)
                 tokens.push_back('#'); 
                 i++; 
                 continue;
+            }
+            else if((map_content[i] == '\\') && !strncmp(&map_content[i+1], "033[", 4))
+            {
+                i += 5;
+                for (; map_content[i] == ' '; i++)
+                {
+                    tokens.push_back(map_content[i]);
+                }
             }
 
             if(map_content[i] == ' ' && (flag == false))
